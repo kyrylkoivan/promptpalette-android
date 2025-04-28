@@ -12,21 +12,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.indie.promptpalette.ui.theme.PromptPaletteTheme
+import android.util.Log
+import com.indie.promptpalette.PromptPaletteApplication
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            PromptPaletteTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+        // This should not crash:
+        Log.d("DB_CHECK", "Room DB path: ${PromptPaletteApplication.database.openHelper.databaseName}")
     }
 }
 
